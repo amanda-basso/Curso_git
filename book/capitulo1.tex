@@ -1,0 +1,67 @@
+\pagenumbering{arabic}
+
+\section{O que é Git?}
+    Git é uma ferramenta de controle de versão, ou seja, permite armazenar diferentes mudanças em um arquivo ou em conjunto de arquivos ao longo do tempo, de modo que seja possível recuperar todas as versões salvas.
+    Trata-se de uma poderosa ferramenta para desenvolvimento de softwares colaborativos e de projetos complexos.
+    \begin{figure}[h]
+        \caption{"Versionamento manual"}
+        \vspace{0.5cm}
+        \centering
+        \includegraphics[width=5cm]{images/versionamento_errado.png}
+        \label{figura:versionamento_errado}
+    \end{figure}
+
+    Quem nunca realizou inúmeras cópias do mesmo projeto, com nomes diferentes (e às vezes nada intuitivos), para fazer controle das diversas versões de um mesmo projeto?
+    Esse método informal não é eficaz nem mesmo quando se trata de projeto simples com apenas um contribuidor.
+    \par Quando várias pessoas, ao longo do tempo e em diversos computadores, têm acesso ao projeto e modificam diversas partes dele, a complexidade do controle de versionamento recrudesce.
+    Ainda há outros fatores a levar em consideração: e se algum dos contribuidores fizer algo errado e for necessário voltar ao estado anterior? E se duas pessoas trabalharem simultaneamente no projeto e acabarem sobrescrevendo a mesma parte?
+    \begin{figure}[h]
+        \caption{Git é uma das ferramentas de versionamento mais conhecidas}
+        \vspace{0.5cm}
+        \centering
+        \includegraphics[width=5cm]{images/git_logo.png}
+        \label{figura:git_logo}
+    \end{figure}
+
+\subsection{Como funciona o Git?}
+    Git vê os dados como um fluxo de snapshots. Quando salvamos o estado de um projeto, Git tira uma foto do estado de todos os dados naquele momento. Em seguida, ele salva a referência em um snapshot.
+    Caso os arquivos não tenham mudado desde o último ponto de salvamento, Git não os salva novamente, mas cria um link para o último arquivo idêntico armazenado.
+    \par A maior parte das operações realizadas pelo Git necessita de arquivos e recursos locais. Visto que o histórico inteiro do projeto é armazenado no disco local, a maior parte das operações são muito rápidas.
+    \par Isso implica que, caso o usuário queira visualizar a diferença entre a versão de um projeto atual e uma mais antiga, Git mostra o resultado das diferenças com base na busca local, sem a necessidade de pedir a um servidor remoto ou buscar uma versão antiga armazenada remotamente.
+    \par Dessa forma, as limitações para uso offline são poucas. É possível continuar trabalhando no projeto e realizar commits na cópia local. Assim que a conexão com o repositório remoto for re-estabelecida, basta atualizar o repositório remoto.
+
+    \subsubsection{Os três estados de Git}
+        \begin{itemize}
+            \item Modificado: quando o arquivo é modificado - \textit{modified} -,
+            significa que ele foi alterado mas ainda não foi colocado em \textit{stage}.
+            \item Staged: o arquivo modificado já foi adicionado ao \textit{stage}. Isso significa que o arquivo está marcado para entrar no próximo commit.
+            \item Commitado: Após o commit, o arquivo está armazenado no banco de dados local.
+        \end{itemize}
+
+        Git funciona, basicamente, da seguinte forma:
+        \begin{enumerate}
+            \item Os arquivos são modificados na \textit{working tree}.
+            \item As modificações desejadas para o próximo \textit{commit} são selecionadas para a área de \textit{stage}.
+            \item Com o \textit{commit}, os arquivos - na versão em que estão na \textit{stage} - são armazenados em formato de \textit{snapshot} no diretório local Git.
+        \end{enumerate}
+
+        \textit{Working tree} - ou árvore de trabalho - é uma versão do projeto. A área de \textit{stage}, por sua vez, trata-se de um arquivo que armazena informações sobre quais modificações entrarão no próximo \textit{commit}.
+        É uma forma de se certificar que foram selecionados os arquivos corretos para serem commitados. Por último, o diretório Git é o local onde Git armazena metadados. \ref{metadata}
+        \footnote{\label{metadata}Metadados são informações associadas a dados que cumprem o objetivo de facilitar a organização. Por exemplo, ao capturar uma foto, metadados são associados a ela, como tamanho e formato do arquivo.}
+
+    \subsubsection{Instalação}
+        É possível utilizar Git de forma gráfica e por meio da linha de comando. Para este curso, será utilizada a linha de comando.
+        \begin{itemize}
+            \item Para instalar em distribuições baseadas em Debian, como o Ubuntu:
+                \begin{lstlisting}
+                    $ sudo apt install git-all
+                \end{lstlisting}
+            \item Em distribuições baseadas em RPM, como o Fedora:
+                \begin{lstlisting}
+                    $ sudo dnf install git-all
+                \end{lstlisting}
+        \end{itemize}
+        O website Git possui outras informações sobre instalação em diversas distribuições Unix: \href{https://git-scm.com/download/linux}.
+
+        \par Instalação no Windows:
+        % TODO Terminar Instalação e configurações iniciais.
